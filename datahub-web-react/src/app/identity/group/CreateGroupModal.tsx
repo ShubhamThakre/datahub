@@ -56,8 +56,20 @@ export default function CreateGroupModal({ visible, onClose, onCreate }: Props) 
                 </>
             }
         >
-            <Form layout="vertical">
-                <Form.Item name="name" label={<Typography.Text strong>Name</Typography.Text>}>
+            <Form layout="vertical" autoComplete="off">
+                <Form.Item
+                    label={<Typography.Text strong>Name</Typography.Text>}
+                    name="name"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please enter the name.',
+                        },
+                        { whitespace: true },
+                        { min: 2, max: 50 },
+                    ]}
+                    hasFeedback
+                >
                     <Typography.Paragraph>Give your new group a name.</Typography.Paragraph>
                     <Input
                         placeholder="A name for your group"
